@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fffbfb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.djangohow.udacity.MainActivity">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#6dc4f5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:paddingLeft="10dp"
+            android:src="@mipmap/devid_hunter_man_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:paddingTop="8dp"
+            android:text="Udacity"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My NodeDegree Apps!"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Movie"
+        android:textSize="16sp"
+        android:onClick="showToastPopularMovie"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_popular_movie"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/bt_stock_hawk"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@+id/bt_stock_hawk"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock Hawk"
+        android:textSize="16sp"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_stock_hawk"
+        android:layout_below="@+id/bt_popular_movie"
+        android:layout_marginTop="6dp"
+        android:layout_alignEnd="@+id/bt_build_it_bigger"
+        android:layout_alignStart="@+id/bt_build_it_bigger"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Build It Bigger"
+        android:textSize="16sp"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_build_it_bigger"
+        android:layout_below="@+id/bt_stock_hawk"
+        android:layout_marginTop="6dp"
+        android:layout_alignEnd="@+id/bt_make_yout_app_material"
+        android:layout_alignStart="@+id/bt_make_yout_app_material"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Your App Material"
+        android:textSize="16sp"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_make_yout_app_material"
+        android:layout_below="@+id/bt_build_it_bigger"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Ubiquitous"
+        android:textSize="16sp"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_go_ubiquitous"
+        android:layout_below="@+id/bt_make_yout_app_material"
+        android:layout_marginTop="6dp"
+        android:layout_alignEnd="@+id/bt_make_yout_app_material"
+        android:layout_alignStart="@+id/bt_make_yout_app_material"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capstone"
+        android:textSize="16sp"
+        android:background="#2E3D49"
+        android:textColor="#f9f2f2"
+        android:id="@+id/bt_capstone"
+        android:layout_below="@+id/bt_go_ubiquitous"
+        android:layout_marginTop="6dp"
+        android:layout_alignEnd="@+id/bt_make_yout_app_material"
+        android:layout_alignStart="@+id/bt_make_yout_app_material"/>
+</RelativeLayout>
