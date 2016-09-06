@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.djangohow.udacity.R;
 import com.djangohow.udacity.api.ApiEntity;
+import com.djangohow.udacity.entity.Constant;
 import com.djangohow.udacity.ui.fragment.DetailFragment;
 import com.djangohow.udacity.ui.fragment.PopMovieFragment;
 import com.djangohow.udacity.utils.MessageEvent;
@@ -36,7 +37,8 @@ public class PopularMovieActivity extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        toolBar.setTitle("Pop Movies");
+        String title = getResources().getString(R.string.toolbar_title);
+        toolBar.setTitle(title);
         setSupportActionBar(toolBar);
         toolBar.inflateMenu(R.menu.menu_main);
         toolBar.setTitleTextColor(getResources().getColor(R.color.colorText));
@@ -44,11 +46,9 @@ public class PopularMovieActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId()==R.id.menu_pop){
-                    mPopMovieFragment.changeOrder(ApiEntity.PopURL+1);
-                    Toast.makeText(PopularMovieActivity.this, "Pop Order", Toast.LENGTH_SHORT).show();
+                    mPopMovieFragment.changeOrder(ApiEntity.PopURL+ Constant.PAGE);
                 }else if(item.getItemId()==R.id.menu_rated){
-                    mPopMovieFragment.changeOrder(ApiEntity.RatedURL+1);
-                    Toast.makeText(PopularMovieActivity.this, "Rated Order", Toast.LENGTH_SHORT).show();
+                    mPopMovieFragment.changeOrder(ApiEntity.RatedURL+Constant.PAGE);
                 }
                 return true;
             }

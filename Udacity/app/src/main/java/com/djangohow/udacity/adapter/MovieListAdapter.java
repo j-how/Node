@@ -45,7 +45,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 //        Log.i("tag",uri.toString());
 //        Log.i("tag",holder.toString());
         Picasso.with(mContext).load(uri).into(holder.iv_item_moive);
-//        holder.sdw_item_moive.setImageURI(uri);
+        holder.sdw_item_moive.setImageURI(uri);
+        holder.sdw_item_moive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new MessageEvent(uri.toString(),mList.get(position)));
+            }
+        });
         holder.iv_item_moive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

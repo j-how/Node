@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.djangohow.udacity.R;
 import com.djangohow.udacity.adapter.MovieListAdapter;
 import com.djangohow.udacity.api.ApiEntity;
+import com.djangohow.udacity.entity.Constant;
 import com.djangohow.udacity.utils.HandleUrl;
 import com.djangohow.udacity.vo.JsonResult;
 import com.djangohow.udacity.vo.MovieBean;
@@ -28,7 +29,6 @@ import java.util.List;
  */
 public class PopMovieFragment extends Fragment {
     private RecyclerView rv_movie_list;
-    private String page = "1";
     public MovieListAdapter adapter;
     public static PopMovieFragment newInstance() {
 
@@ -50,7 +50,7 @@ public class PopMovieFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pop_movie, container, false);
         rv_movie_list = (RecyclerView) view.findViewById(R.id.rv_movie_list);
-        changeOrder(ApiEntity.PopURL+page);
+        changeOrder(ApiEntity.PopURL+ Constant.PAGE);
         return view;
     }
 
@@ -71,17 +71,28 @@ public class PopMovieFragment extends Fragment {
         @Override
         protected void onPostExecute(List<MovieBean> movieBean) {
             super.onPostExecute(movieBean);
-            Log.i("tag",movieBean.get(0).toString());
-            adapter = new MovieListAdapter(getActivity(), (ArrayList<MovieBean>) movieBean);
-            rv_movie_list.setAdapter(adapter);
-            rv_movie_list.setLayoutManager(new GridLayoutManager(getContext(),4));
+//            Log.i("tag",movieBean.get(0).toString());
+            if (movieBean!=null) {
+                adapter = new MovieListAdapter(getActivity(), (ArrayList<MovieBean>) movieBean);
+                rv_movie_list.setAdapter(adapter);
+                rv_movie_list.setLayoutManager(new GridLayoutManager(getContext(), 4));
+            }else {
+                String hint = getResources().getString(R.string.hint_net_unstable);
+                Toast.makeText(getActivity(), hint, Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private List<MovieBean> getMovies(String json) {
+        ArrayList<MovieBean> movies = null;
         Gson gson = new Gson();
-        JsonResult movie = gson.fromJson(json,JsonResult.class);
-        ArrayList<MovieBean> movies = (ArrayList<MovieBean>) movie.results;
-        return movies;
+        JsonResult movie = gson.fromJson(json, JsonResult.class);
+        if (movie==null){
+            return movies;
+        }else {
+            Log.i("tag","movie:"+movie);
+            movies = (ArrayList<MovieBean>) movie.results;
+            return movies;
+        }
     }
 
 }

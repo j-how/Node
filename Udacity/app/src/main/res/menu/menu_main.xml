@@ -5,10 +5,10 @@
         android:id="@+id/menu_pop"
         android:orderInCategory="10"
         app:showAsAction="never"
-        android:title="Popular"/>
+        android:title="@string/popular"/>
     <item
         android:id="@+id/menu_rated"
         android:orderInCategory="20"
         app:showAsAction="never"
-        android:title="Rated"/>
+        android:title="@string/rated"/>
 </menu>

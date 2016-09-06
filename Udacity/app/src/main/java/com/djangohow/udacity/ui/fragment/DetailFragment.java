@@ -1,6 +1,7 @@
 package com.djangohow.udacity.ui.fragment;
 
 
+import android.net.Uri;
 import android.os.Bundle;;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.djangohow.udacity.R;
 import com.djangohow.udacity.vo.MovieBean;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 
 
@@ -20,6 +22,7 @@ import com.squareup.picasso.Picasso;
 public class DetailFragment extends Fragment {
     private TextView original_title,release_date,original_language,vote_average,overview;
     private ImageView poster_path;
+    private SimpleDraweeView sdw_detail;
     public static DetailFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -50,6 +53,7 @@ public class DetailFragment extends Fragment {
         overview = (TextView) view.findViewById(R.id.overview);
 
         poster_path = (ImageView) view.findViewById(R.id.poster_path);
+//        sdw_detail = (SimpleDraweeView) view.findViewById(R.id.sdw_detail);
     }
 
     public void setValue(String url, MovieBean bean) {
@@ -59,5 +63,7 @@ public class DetailFragment extends Fragment {
         vote_average.setText(bean.vote_average+"/10");
         overview.setText(bean.overview);
         Picasso.with(getContext()).load(url).into(poster_path);
+        Uri uri = Uri.parse(url);
+//        sdw_detail.setImageURI(uri);
     }
 }

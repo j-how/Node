@@ -4,12 +4,14 @@
               android:orientation="vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content">
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sdw_item_moive"/>
     <ImageView
         android:id="@+id/iv_item_moive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fresco:placeholderImage="@mipmap/ic_launcher"
+        android:id="@+id/sdw_item_moive"/>
+
 </LinearLayout>
