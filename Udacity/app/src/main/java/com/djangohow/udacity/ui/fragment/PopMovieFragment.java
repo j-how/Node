@@ -1,9 +1,12 @@
 package com.djangohow.udacity.ui.fragment;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,11 +33,14 @@ import java.util.List;
 public class PopMovieFragment extends Fragment {
     private RecyclerView rv_movie_list;
     public MovieListAdapter adapter;
-    public static PopMovieFragment newInstance() {
+    public static Context sContext;
 
+
+    public static PopMovieFragment newInstance(Context context) {
         Bundle args = new Bundle();
-
+//        sContext = context;
         PopMovieFragment fragment = new PopMovieFragment();
+        sContext = context;
         fragment.setArguments(args);
         return fragment;
     }
@@ -77,8 +83,8 @@ public class PopMovieFragment extends Fragment {
                 rv_movie_list.setAdapter(adapter);
                 rv_movie_list.setLayoutManager(new GridLayoutManager(getContext(), 4));
             }else {
-                String hint = getResources().getString(R.string.hint_net_unstable);
-                Toast.makeText(getActivity(), hint, Toast.LENGTH_SHORT).show();
+                String hint = sContext.getResources().getString(R.string.hint_net_unstable);
+                Toast.makeText(sContext, hint, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -94,5 +100,4 @@ public class PopMovieFragment extends Fragment {
             return movies;
         }
     }
-
 }

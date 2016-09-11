@@ -29,7 +29,7 @@ public class PopularMovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_movie);
         Fresco.initialize(this);
-        mPopMovieFragment = PopMovieFragment.newInstance();
+        mPopMovieFragment = PopMovieFragment.newInstance(this);
         mDetailFragment = DetailFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.fm_pop_moive,mPopMovieFragment).commit();
         toolBar = (Toolbar) findViewById(R.id.toolBar);
