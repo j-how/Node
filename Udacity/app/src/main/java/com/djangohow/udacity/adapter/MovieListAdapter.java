@@ -3,7 +3,6 @@ package com.djangohow.udacity.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import com.djangohow.udacity.utils.MessageEvent;
 import com.djangohow.udacity.vo.MovieBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
+import com.udacity.bean.BeanMovie;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,9 +25,9 @@ import java.util.ArrayList;
  */
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyViewHolder>{
     private Context mContext;
-    private ArrayList<MovieBean> mList;
+    private ArrayList<BeanMovie> mList;
 
-    public MovieListAdapter(Context context, ArrayList<MovieBean> list) {
+    public MovieListAdapter(Context context, ArrayList<BeanMovie> list) {
         mContext = context;
         mList = list;
     }
@@ -41,9 +41,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Uri uri = Uri.parse(ApiEntity.ImageURL+mList.get(position).poster_path);
-//        Log.i("tag",uri.toString());
-//        Log.i("tag",holder.toString());
+        final Uri uri = Uri.parse(ApiEntity.ImageURL+mList.get(position).getPoster_path());
         Picasso.with(mContext).load(uri).into(holder.iv_item_moive);
         holder.sdw_item_moive.setImageURI(uri);
         holder.sdw_item_moive.setOnClickListener(new View.OnClickListener() {

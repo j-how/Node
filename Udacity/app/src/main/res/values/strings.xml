@@ -17,8 +17,14 @@
     
     <!--Toast提示-->
     <string name="hint_net_unstable">网络不稳定，请检查....</string>
+    <string name="favarite_add">加入收藏</string>
+    <string name="favarite_delete">取消收藏</string>
 
     <!--menu title-->
     <string name="popular">Popular</string>
     <string name="rated">Rated</string>
+    <string name="favorite">Favorite</string>
+
+    <!--hint-->
+    <string name="tv_hint">点\n击\n左\n边\n图\n片</string>
 </resources>

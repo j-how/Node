@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
             xmlns:fresco="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
@@ -6,7 +6,10 @@
              tools:context="com.djangohow.udacity.ui.fragment.DetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,12 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:text="original_title"
             android:textSize="36sp"
             android:gravity="left|center"
             android:paddingLeft="30dp"
             android:textColor="@color/colorText1"
-            android:background="@color/backgroud"
+
             android:id="@+id/original_title"/>
         <LinearLayout
             android:orientation="horizontal"
@@ -40,21 +42,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/release_date"
-                    android:text="release_date"
                     android:textSize="30sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/original_language"
-                    android:text="original_language"
                     android:textSize="24sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/vote_average"
-                    android:text="vote_average"
                     android:textSize="20sp"/>
-
+                <Button
+                    android:id="@+id/bt_add_to_favorite"
+                    android:background="@color/colorBackgroud"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
         <TextView
@@ -65,6 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <View  android:layout_height="1px"
+               android:id="@+id/view_up_video"
+               android:visibility="invisible"
                android:layout_marginRight="10dp"
                android:layout_marginLeft="10dp"
                android:layout_marginTop="10dp"
@@ -76,6 +81,26 @@
             <!--fresco:placeholderImage="@mipmap/ic_launcher"-->
             <!--android:layout_width="90dp"-->
             <!--android:layout_height="130dp"/>-->
+        <include layout="@layout/video" android:id="@+id/layout_video"/>
+            <View  android:layout_height="1px"
+                   android:id="@+id/view_up_review"
+                   android:visibility="invisible"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:background="@color/colorPrimary"
+                   android:layout_width="match_parent"/>
+        <include layout="@layout/review"
+                 android:id="@+id/elv_review"/>
     </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+    <TextView
+        android:id="@+id/tv_hint"
+        android:text="@string/tv_hint"
+        android:background="@color/backgroud"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

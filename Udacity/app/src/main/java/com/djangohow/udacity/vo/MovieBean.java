@@ -21,6 +21,14 @@ public class MovieBean {
     public boolean video;
     public float vote_average;
 
+    public int[] getGenre_ids() {
+        return genre_ids;
+    }
+
+    public void setGenre_ids(int[] genre_ids) {
+        this.genre_ids = genre_ids;
+    }
+
     @Override
     public String toString() {
         return "MovieBean{" +

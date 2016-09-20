@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.djangohow.udacity">
+
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/devid_hunter_man_user"
         android:label="@string/app_name"
-        android:name=".MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity">
@@ -18,6 +20,16 @@
         </activity>
         <activity android:name=".ui.PopularMovieActivity">
         </activity>
+
+        <service
+            android:name=".service.MyIntentService"
+            android:exported="false">
+        </service>
+
+        <provider
+            android:name=".provider.MovieProvider"
+            android:authorities="com.django.provider">
+        </provider>
     </application>
 
 </manifest>
