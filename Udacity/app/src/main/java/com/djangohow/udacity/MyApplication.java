@@ -8,6 +8,7 @@ import com.djangohow.udacity.api.ApiEntity;
 import com.djangohow.udacity.entity.Constant;
 import com.djangohow.udacity.service.MyIntentService;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.udacity.dao.BeanMovieDao;
 import com.udacity.dao.DaoMaster;
 import com.udacity.dao.DaoSession;
 
@@ -19,6 +20,7 @@ public class MyApplication extends Application{
     public static SQLiteDatabase db;
     public static DaoMaster.DevOpenHelper openHelper;
     public static DaoMaster daoMaster;
+    public static BeanMovieDao beanMovieDao;
 
     @Override
     public void onCreate() {
@@ -38,5 +40,6 @@ public class MyApplication extends Application{
         db = openHelper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
+        beanMovieDao = daoSession.getBeanMovieDao();
     }
 }

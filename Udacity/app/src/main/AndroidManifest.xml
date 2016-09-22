@@ -28,7 +28,7 @@
 
         <provider
             android:name=".provider.MovieProvider"
-            android:authorities="com.django.provider">
+            android:authorities="com.django.udacity.provider">
         </provider>
     </application>
 

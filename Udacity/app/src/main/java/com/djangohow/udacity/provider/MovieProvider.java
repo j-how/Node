@@ -5,19 +5,35 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 import com.djangohow.udacity.MyApplication;
+import com.udacity.dao.BeanMovieDao;
+import com.udacity.dao.DaoMaster;
+import com.udacity.dao.DaoSession;
+
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 public class MovieProvider extends ContentProvider {
-    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    private static final int QUERY_POP_SUCCESS = 1;
-    private static final int QUERY_RATED_SUCCESS = 2;
+
+    static MyApplication app;
+    static BeanMovieDao beanMovieDao;
+    static DaoSession daoSession;
+    static SQLiteDatabase db;
+    static DaoMaster.DevOpenHelper openHelper;
+    static DaoMaster daoMaster;
+    private static UriMatcher sUriMatcher;
+    private static final int MOVIE_DIR = 1;
+
+    public static final String AUTHORITY = "com.django.udacity.provider";
+    static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 //    private DaoMaster.DevOpenHelper openHelper;
-    private SQLiteDatabase db;
+
     static {
-        sUriMatcher.addURI("com.django.provider","pop",QUERY_POP_SUCCESS);
-        sUriMatcher.addURI("com.django.provider","rated",QUERY_RATED_SUCCESS);
+        sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        sUriMatcher.addURI(AUTHORITY,"BeanMovie",MOVIE_DIR);
     }
     public MovieProvider() {
     }
@@ -32,7 +48,8 @@ public class MovieProvider extends ContentProvider {
     public String getType(Uri uri) {
         // TODO: Implement this to handle requests for the MIME type of the data
         // at the given URI.
-        throw new UnsupportedOperationException("Not yet implemented");
+//        throw new UnsupportedOperationException("Not yet implemented");
+        return "vnd.android.cursor.dir/vnd.com.django.udacity.provider.BeanMovie";
     }
 
     @Override
@@ -41,35 +58,40 @@ public class MovieProvider extends ContentProvider {
 
 //                ArrayList<PopMovie> movies = (ArrayList<PopMovie>) app.daoSession.getPopMovieDao().queryRaw(null,null);
 //        ArrayList<PopMovie> movies  = (ArrayList<PopMovie>) app.daoSession.getPopMovieDao().queryBuilder().list();
-//        Log.i("tag", "onClick: "+movies.size());
-//        Log.i("tag", "onClick: "+movies.get(0).toString());
-//        Log.i("tag", "onClick: "+movies.get(0).getBackdrop_path());
-//        Log.i("tag", "onClick: "+movies.get(0).getGenre_ids());
+
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public boolean onCreate() {
         // TODO: Implement this to initialize your content provider on startup.
-//        openHelper = MyApplication.getApplication().openHelper;
-//        db = MyApplication.db;
-        return false;
+        app = new MyApplication();
+//        beanMovieDao = app.daoSession.getBeanMovieDao();
+//        daoSession = app.daoSession;
+        db = app.db;
+//        openHelper = app.openHelper;
+//        daoMaster = app.daoMaster;
+        return true;
     }
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
-        // TODO: Implement this to handle query requests from clients.
-        int code = sUriMatcher.match(uri);
-        if (code == QUERY_POP_SUCCESS) {
-            Cursor cursor = db.query("PopMovie", projection, selection, selectionArgs, null, null, sortOrder);
-            return cursor;
-        }else if (code == QUERY_RATED_SUCCESS){
-            Cursor cursor = db.query("RatedMovie", projection, selection, selectionArgs, null, null, sortOrder);
-            return cursor;
-        } else {
-            throw new UnsupportedOperationException("Uri 路径不匹配");
-        }
+//        // TODO: Implement this to handle query requests from clients.
+//        int uriType = sUriMatcher.match(uri);
+////        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+//        QueryBuilder queryBuilder = beanMovieDao.queryBuilder();
+////        Query query = query()
+//        switch (uriType){
+//            case MOVIE_DIR:
+////                queryBuilder.setTables("BeanMovie");
+//
+//                break;
+//        }
+//        Cursor cursor = queryBuilder.query(db,projection,selection,selectionArgs,null,null,sortOrder);
+//        cursor.setNotificationUri(getContext().getContentResolver(),uri);
+//        return cursor;
+        return null;
     }
 
     @Override

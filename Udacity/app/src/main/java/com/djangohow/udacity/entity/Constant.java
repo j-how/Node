@@ -10,5 +10,6 @@ public class Constant {
     public static final int TYPE_FAVORITE = 3;
     public static final boolean FAVORITE_NO = false;
     public static final boolean FAVORITE_YES = true;
+    public static final int URL_LOADER = 0;
 
 }
