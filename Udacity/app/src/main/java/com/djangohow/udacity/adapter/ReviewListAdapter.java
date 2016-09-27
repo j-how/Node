@@ -91,7 +91,6 @@ public class ReviewListAdapter extends BaseAdapter{
                         int defaultHight = holder.review_item_tv_content.getHeight();
                         holder.review_item_tv_content.setHeight(holder.review_item_tv_content.getLineHeight() * 8);
 //                    holder.review_item_tv_content.setVisibility(View.GONE);
-                        Toast.makeText(mContext, "xxx:" + position, Toast.LENGTH_SHORT).show();
                     }
                     break;
             }

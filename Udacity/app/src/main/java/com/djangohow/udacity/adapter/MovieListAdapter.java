@@ -43,13 +43,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Uri uri = Uri.parse(ApiEntity.ImageURL+mList.get(position).getPoster_path());
         Picasso.with(mContext).load(uri).into(holder.iv_item_moive);
-        holder.sdw_item_moive.setImageURI(uri);
-        holder.sdw_item_moive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new MessageEvent(uri.toString(),mList.get(position)));
-            }
-        });
         holder.iv_item_moive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +66,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
         public ImageView iv_item_moive;
         public MyViewHolder(View itemView) {
             super(itemView);
-            sdw_item_moive = (SimpleDraweeView) itemView.findViewById(R.id.sdw_item_moive);
             iv_item_moive = (ImageView) itemView.findViewById(R.id.iv_item_moive);
         }
     }

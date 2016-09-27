@@ -6,7 +6,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +26,10 @@ import com.djangohow.udacity.api.ApiEntity;
 import com.djangohow.udacity.entity.Constant;
 import com.djangohow.udacity.selfDefine.ExpandListView;
 import com.djangohow.udacity.service.MyIntentService;
+import com.djangohow.udacity.ui.PopularMovieActivity;
 import com.djangohow.udacity.vo.ReviewList;
 import com.djangohow.udacity.vo.VideoList;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 import com.udacity.bean.BeanMovie;
@@ -42,8 +46,6 @@ import butterknife.ButterKnife;
 public class DetailFragment extends Fragment implements View.OnClickListener, MyIntentService.VideoListListener, MyIntentService.ReviewListListener {
     @BindView(R.id.original_title)
     TextView mOriginalTitle;
-    @BindView(R.id.poster_path)
-    ImageView mPosterPath;
     @BindView(R.id.release_date)
     TextView mReleaseDate;
     @BindView(R.id.original_language)
@@ -66,6 +68,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener, My
     LinearLayout mLlDetail;
     @BindView(R.id.tv_hint)
     TextView mTvHint;
+    @BindView(R.id.sdw_detail)
+    SimpleDraweeView mSdwDetail;
 
     private MyApplication app;
     private BeanMovie mBeanMovie;
@@ -97,7 +101,6 @@ public class DetailFragment extends Fragment implements View.OnClickListener, My
                         mViewUpReview.setVisibility(View.VISIBLE);
                     }
                     break;
-
             }
         }
     };
@@ -117,10 +120,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener, My
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Fresco.initialize(sContext);
         mLayoutInflater = LayoutInflater.from(sContext);
         app = (MyApplication) getActivity().getApplication();
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, view);
+        PopularMovieActivity.isDetailFragment = true;
 
         if (sMovie != null) {
             setValue(sMovie.getPoster_path(), sMovie);
@@ -133,11 +138,18 @@ public class DetailFragment extends Fragment implements View.OnClickListener, My
         //保存状态
         sMovie = bean;
         mOriginalTitle.setText(bean.getOriginal_title());
+        //焦点集中  防止启动后跳屏
+        mOriginalTitle.setFocusableInTouchMode(true);
+        mOriginalTitle.setFocusable(true);
+        mOriginalTitle.requestFocus();
+
         mReleaseDate.setText(bean.getRelease_date());
         mOriginalLanguage.setText(bean.getOriginal_language());
         mVoteAverage.setText(bean.getVote_average() + "/10");
         mOverview.setText(bean.getOverview());
-        Picasso.with(getContext()).load(url).into(mPosterPath);
+
+        mSdwDetail.setImageURI(url);
+
         int color = sContext.getResources().getColor(R.color.backgroud);
         mOriginalTitle.setBackgroundColor(color);
         Drawable button_bg = sContext.getResources().getDrawable(R.drawable.bt_favorite);

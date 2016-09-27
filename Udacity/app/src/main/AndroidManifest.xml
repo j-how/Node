@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PopularMovieActivity">
+        <activity android:name=".ui.PopularMovieActivity"
+            android:configChanges="orientation|screenSize">
         </activity>
 
         <service
@@ -26,10 +27,6 @@
             android:exported="false">
         </service>
 
-        <provider
-            android:name=".provider.MovieProvider"
-            android:authorities="com.django.udacity.provider">
-        </provider>
     </application>
 
 </manifest>

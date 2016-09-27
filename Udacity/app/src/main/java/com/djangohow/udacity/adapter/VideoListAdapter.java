@@ -61,7 +61,10 @@ public class VideoListAdapter extends BaseAdapter{
             public void onClick(View v) {
                 Toast.makeText(mContext, mList.get(position).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(ApiEntity.YouTubeURL+mList.get(position).getKey()));
-                mContext.startActivity(intent);
+                if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                    mContext.startActivity(intent);
+                }
+
             }
         });
         return convertView;

@@ -27,4 +27,5 @@
 
     <!--hint-->
     <string name="tv_hint">点\n击\n左\n边\n图\n片</string>
+    <string name="suggest">建议使用横屏</string>
 </resources>
