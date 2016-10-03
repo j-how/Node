@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Stock Hawk</string>
+
+    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    <string name="empty_state_no_connection_title">注意！！！</string>
+    <string name="empty_state_no_connection_message">网络连接问题，请检查重试！</string>
+    <string name="empty_state_no_stock_title">(⊙o⊙)…</string>
+    <string name="empty_state_no_stock_message">没有关注股票，点击按钮添加</string>
+    <string name="offline">离线</string>
+    <string name="try_again">重试</string>
+    <string name="no_internet_connection">网络连接故障</string>
+    <string name="add_symbol">添加股票代码</string>
+    <string name="add">添加</string>
+    <string name="disagree">取消</string>
+    <string name="add_stock_quote">添加股票代码</string>
+    <string name="error_action">没有此action</string>
+    <string name="stock_already_saved">此股票已经关注</string>
+    <string name="stock_is_not_exist">此股票不存在</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_stock_detail">StockDetailActivity</string>
+    <string name="stock_detail_tab_header">NASDAQ: %1$s</string>
+</resources>
